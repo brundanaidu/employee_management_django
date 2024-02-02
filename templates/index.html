@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee_Details</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</head>
+<body >
+<div class="table" style="margin-top:20px">
+
+            <center><h2 style="color:red">Employee Information </h2></center>
+            <a href="{% url 'create' %}"><button class="btn btn-primary offset-md-10">Add Employee</button></a>
+            <br>
+            <table border="1" width="100%" style="margin-top:20px">
+
+                <thead>
+                <tr align="center">
+                    <th scope="col">S.no</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">age</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">DOB</th>
+                    <th scope="col">company</th>
+                    <th scope="col">Dept</th>
+                    <th scope="col">skills</th>
+                    <th scope="col">salary</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for Employees in Employee %}
+                <tr align="center">
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{ Employees.name }}</td>
+                    <td>{{ Employees.email }}</td>
+                    <td>{{ Employees.age }}</td>
+                    <td>{{ Employees.gender }}</td>
+                    <td>{{ Employees.dob }}</td>
+                    <td>{{ Employees.company }}</td>
+                    <td>{{ Employees.department }}</td>
+                    <td>{{ Employees.skills }}</td>
+                    <td>{{ Employees.salary }}</td>
+                    <td>{{ Employees.address }}</td>
+                    <td>
+                        <a href="{% url 'edit' Employees.id %}">
+                            <button class="btn btn-primary">Edit</button>
+                        </a>
+                        <a href="{% url 'delete' Employees.id %}">
+                            <button class="btn btn-danger">Delete</button>
+                        </a>
+                        <a href="{% url 'view' Employees.id %}">
+                            <button class="btn btn-secondary ">view</button>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+</div>
+</body>
+</html>
